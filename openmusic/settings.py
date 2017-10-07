@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'openmusic',
-        'USER': 'peradoce',
-        'PASSWORD': 'ulx123@bmw',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',
     }
