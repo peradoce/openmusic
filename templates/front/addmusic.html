@@ -2,52 +2,48 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-
+{% include "navbar.html" %}
 <div class="section container">
   <div class="row card">
-    <div class="col s12 m12 l12 blue lighten-2">
+    <div class="col s12 m12 l12 blue">
       <center>
         <h3 class="flow-text white-text"> <b>Add Music</b> </h3>
       </center>
     </div>
-    <form action="" method="POST">
-    <div class="input-field col s12 m12 l12">
-    </div>
-    <div class="input-field col s12 m12 l12">
-      {{ form.title }}
-      <label for="title">Music Name</label>
-    </div>
-    <div class="input-field col s12 m12 l6">
-      {{ form.code }}
-      <label for="code">Youtube video code</label>
-    </div>
-    <div class="input-field col s12 m12 l6">
-    <select name="genre">
-      {% for genres in genre %}
-        <option value="{{ genres.id }}">{{ genres.genre }}</option>
-      {% endfor %}
-    </select>
-    <label>Genre</label>
-  </div>
-    <div class="input-field col s12 m12 l12">
-      <center>
-        {% csrf_token %}
-        <button type="submit" class="waves-effect waves-light btn blue lighten-2">
-          Add Music
-        </button>
-      </center>
-    </div>
-    <div class="input-field col s12 m12 l12">
-      {% if success_msg %}
-        <p class="blue-text">Music added with success</p>
-      {% else %}
-        {% if form.errors %}
-          {{ form.errors }} </br>
-        {% endif %}
-      {% endif %}
-    </div>
-    <div class="input-field col s12 m12 l12">
-    </div>
+    <form class="addMusicForm" action="" method="POST">
+      <div class="input-field col s12 m12 l12">
+      </div>
+      <div class="input-field col s12 m12 l12">
+        {{ form.title }}
+        <label for="title">Music Name</label>
+      </div>
+      <div class="input-field col s12 m12 l6">
+        {{ form.code }}
+        <label for="code">Youtube video code</label>
+      </div>
+      <div class="input-field col s12 m12 l6">
+        <select name="genre">
+          <option selected="selected" value="">Choose a Genre</option>
+          {% for genres in genre %}
+            <option value="{{ genres.id }}">{{ genres.genre }}</option>
+          {% endfor %}
+        </select>
+        <label>Genre</label>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <center>
+          {% csrf_token %}
+          <button type="submit" class="waves-effect waves-light btn blue">
+            Add Music
+          </button>
+        </center>
+      </div>
+      <div class="input-field col s12 m12 l12 blue-text" id="displayMsg">
+
+      </div>
+      <div class="input-field col s12 m12 l12">
+      </div>
+    </form>
   </div>
 </div>
 

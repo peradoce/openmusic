@@ -22,4 +22,5 @@ from main.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^addmusic/$', addMusic, name='addMusic'),
+    url(r'^addmusicajax/$', addMusicAjax, name='addMusicAjax'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
