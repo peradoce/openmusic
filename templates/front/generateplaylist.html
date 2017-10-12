@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% include "navbar.html" %}
+  <div class="section container">
+    <div class="row card">
+      <div class="col s12 m12 l12 blue text-center-bold">
+
+          <p class="flow-text white-text"><b>Generate Playlist</b></p>
+
+      </div>
+      <form action="" method="POST" class="generatePlaylist">
+        <div class="input-field col s12 m12 l12">
+          {{ form.title }}
+          <label for="title">Music Name</label>
+        </div>
+        <div class="input-field col s12 m12 l12">
+          {{ form.description }}
+          <label for="description">Description</label>
+        </div>
+        <div class="input-field col s12 m12 l12">
+          {{ form.email }}
+          <label for="email">E-mail</label>
+        </div>
+        <div class="input-field col s12 m12 l12">
+          <select name="genre">
+            <option selected="selected" value="">Choose a Genre</option>
+            {% for genres in genre %}
+              <option value="{{ genres.id }}">{{ genres.genre }}</option>
+            {% endfor %}
+          </select>
+          <label>Genre</label>
+        </div>
+        <div class="input-field col s12 m12 l12">
+          <center>
+            {% csrf_token %}
+            <button type="submit" class="waves-effect waves-light btn blue">
+              Generate Playlist
+            </button>
+          </center>
+        </div>
+        <div class="input-field col s12 m12 l12 blue-text text-center-bold" id="displayMsg">
+          {{ date }}
+        </div>
+        <div class="input-field col s12 m12 l12 blue-text text-center-bold" id="displayKey">
+
+        </div>
+        <div class="input-field col s12 m12 l12">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
