@@ -11,24 +11,40 @@ $(document).ready(function(e) {
           }
       }
   });
-  $(".addMusicForm").submit(function(e){
 
+  $(".generatePlaylist").submit(function(e){
     e.preventDefault();
     $.ajax({
       type:"POST",
-      url:"/addmusicajax/",
+      url:"/playlist-form-ajax/",
       data:$(this).serialize(),
       dataType: "json",
       success: function(data) {
-        $.each(data, function(i, row){
-          $("#displayMsg").append(row);
-        });
+        $('#displayMsg').empty();
+        $('#displayKey').empty();
+        if (data.final_key != '')
+        {
+          $("#displayMsg").append(data.success_msg + '<br>');
+        }
+        else{
+          $.each(data, function(i, row){
+            $("#displayMsg").append(row + '<br>');
+          });
+        }
 
-        $(".addMusicForm").trigger("reset");
+        $("#displayKey").append('<h5>Your key is: </h5>');
+        $("#displayKey").append('<h5>' + data.final_key + '</h5><br>');
+        $(".generatePlaylist").trigger("reset");
       },
       error: function() {
           alert('error handing here');
       }
     });
   });
+
+  $( ".music-code" ).click(function() {
+    var ytcode = $(".music-code").val();
+
+  });
+
 });

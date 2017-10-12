@@ -24,6 +24,14 @@
     .cool-font{
       font-family: 'Righteous', cursive;
     }
+    .text-center-bold{
+      text-align: center;
+      font-weight: bold;
+    }
+    .current-song li{
+      background-color: #2196f3;
+      text:white;
+    }
   </style>
   {% block ad %}{% endblock %}
   {% block content %}{% endblock %}
@@ -41,7 +49,14 @@
 
   });
   </script>
+  <script src="http://www.youtube.com/player_api"></script>
   <script type="text/javascript" src="{% static "main/js/general.js" %}">
+  </script>
+  <script type="text/javascript" src="{% static "main/js/audioplayer.js" %}">
+  </script>
+  <script>
+        // loads the audio player
+        audioPlayer();
   </script>
 </body>
 </html>

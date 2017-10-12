@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% include "navbar.html" %}
+
+
+<div class="section container">
+  <div class="row card">
+    <div class="col s12 m12 l12 blue text-center-bold">
+      <p class="flow-text white-text">Music Player</p>
+    </div>
+    <div class="col s12 m12 l12">
+      <p class="flow-text text-center-bold" id="current-playing"></p>
+    </div>
+    <div class="col s12 m12 l12">
+      <center>
+        <audio  controls id="audioPlayer">
+          <source src="" type="audio/ogg" >
+        </audio>
+      </center>
+    </div>
+  </div>
+</div>
+
+<div class="section container">
+  <div class="row card">
+    <div class="col s12 l12 m12 blue text-center-bold">
+      <p class="flow-text white-text">Music List</p>
+    </div>
+    <div class="col s12 l12 m12 text-center-bold">
+
+    <ul class="collection" id="playlist">
+      {% for first in first_music %}
+        <li class="collection-item current-song blue">
+
+            <a href="{{ first.music_file.url }}" class="black-text"> <i class="material-icons left">play_arrow</i> {{ first.title }}</a>
+            <a href="{{ first.artist.facebook }}" class="right black-text">Facebook</a>
+        </li>
+
+      {% endfor %}
+      {% for music in musics %}
+      <li class="collection-item">
+
+              <a href="{{ music.music_file.url }}" class="black-text"> <i class="material-icons left">play_arrow</i> {{ music.title }}</a>
+              <a href="{{ music.artist.facebook }}" class="right black-text">Facebook</a>
+
+      </li>
+      {% endfor %}
+    </ul>
+
+
+    </div>
+</div>
+
+{% endblock %}

@@ -21,6 +21,7 @@ from main.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^addmusic/$', addMusic, name='addMusic'),
-    url(r'^addmusicajax/$', addMusicAjax, name='addMusicAjax'),
+    url(r'^generate-playlist/$', PlaylistView, name='PlaylistView'),
+    url(r'^playlist-form-ajax/$', PlaylistFormAjax, name='PlaylistFormAjax'),
+    url(r'^list-music/$', listMusic, name='listMusic'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
